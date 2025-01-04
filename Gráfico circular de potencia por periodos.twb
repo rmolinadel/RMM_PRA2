@@ -1,0 +1,348 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20243.24.1010.1014                               -->
+<workbook original-version='18.1' source-build='2024.3.0 (20243.24.1010.1014)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AnimationOnByDefault />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='Hoja1 (potencia_por_periodos)' inline='true' name='federated.17d8hs20oewems11wl0mq1b85azm' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='potencia_por_periodos' name='excel-direct.0a73c0g18p1wxo1095kbh09e3q6m'>
+            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='C:/Users/ruben/Desktop/UOC/ASIGNATURAS OBLIGATORIAS/M2.859 - Visualización de datos/PRA2/potencia_por_periodos.xlsx' interpretationMode='0' password='' server='' validate='no' />
+          </named-connection>
+        </named-connections>
+        <relation connection='excel-direct.0a73c0g18p1wxo1095kbh09e3q6m' name='Hoja1' table='[Hoja1$]' type='table'>
+          <columns gridOrigin='A1:C9:no:A1:C9:0' header='yes' outcome='2'>
+            <column datatype='string' name='Periodo' ordinal='0' />
+            <column datatype='integer' name='Potencia' ordinal='1' />
+            <column datatype='real' name='Proporción' ordinal='2' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Hoja1]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='context'>0</attribute>
+              <attribute datatype='string' name='gridOrigin'>&quot;A1:C9:no:A1:C9:0&quot;</attribute>
+              <attribute datatype='boolean' name='header'>true</attribute>
+              <attribute datatype='integer' name='outcome'>2</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Periodo</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Periodo]</local-name>
+            <parent-name>[Hoja1]</parent-name>
+            <remote-alias>Periodo</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LES_RES_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+            <object-id>[Hoja1_A54CC093C8E94BB49CDF83CCDF68262B]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Potencia</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Potencia]</local-name>
+            <parent-name>[Hoja1]</parent-name>
+            <remote-alias>Potencia</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <object-id>[Hoja1_A54CC093C8E94BB49CDF83CCDF68262B]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Proporción</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Proporción]</local-name>
+            <parent-name>[Hoja1]</parent-name>
+            <remote-alias>Proporción</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <object-id>[Hoja1_A54CC093C8E94BB49CDF83CCDF68262B]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Hoja1' datatype='table' name='[__tableau_internal_object_id__].[Hoja1_A54CC093C8E94BB49CDF83CCDF68262B]' role='measure' type='quantitative' />
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;España&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <object-graph>
+        <objects>
+          <object caption='Hoja1' id='Hoja1_A54CC093C8E94BB49CDF83CCDF68262B'>
+            <properties context=''>
+              <relation connection='excel-direct.0a73c0g18p1wxo1095kbh09e3q6m' name='Hoja1' table='[Hoja1$]' type='table'>
+                <columns gridOrigin='A1:C9:no:A1:C9:0' header='yes' outcome='2'>
+                  <column datatype='string' name='Periodo' ordinal='0' />
+                  <column datatype='integer' name='Potencia' ordinal='1' />
+                  <column datatype='real' name='Proporción' ordinal='2' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Potencia por periodos'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Hoja1 (potencia_por_periodos)' name='federated.17d8hs20oewems11wl0mq1b85azm' />
+          </datasources>
+          <datasource-dependencies datasource='federated.17d8hs20oewems11wl0mq1b85azm'>
+            <column datatype='string' name='[Periodo]' role='dimension' type='nominal' />
+            <column datatype='real' name='[Proporción]' role='measure' type='quantitative' />
+            <column-instance column='[Periodo]' derivation='None' name='[none:Periodo:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Proporción]' derivation='Sum' name='[sum:Proporción:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Pie' />
+            <encodings>
+              <color column='[federated.17d8hs20oewems11wl0mq1b85azm].[none:Periodo:nk]' />
+              <wedge-size column='[federated.17d8hs20oewems11wl0mq1b85azm].[sum:Proporción:qk]' />
+              <size column='[federated.17d8hs20oewems11wl0mq1b85azm].[sum:Proporción:qk]' />
+              <text column='[federated.17d8hs20oewems11wl0mq1b85azm].[none:Periodo:nk]' />
+              <text column='[federated.17d8hs20oewems11wl0mq1b85azm].[sum:Proporción:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+        <mark-labels>
+          <mark-label id='0'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields />
+                  <y-fields />
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.17d8hs20oewems11wl0mq1b85azm].[none:Periodo:nk]</field>
+                  <field>[federated.17d8hs20oewems11wl0mq1b85azm].[sum:Proporción:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>&quot;2005-2014&quot;</value>
+                <value>0.59194987252245757</value>
+              </tuple>
+            </tuple-reference>
+            <label-position x='82' y='15' />
+          </mark-label>
+          <mark-label id='1'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields />
+                  <y-fields />
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.17d8hs20oewems11wl0mq1b85azm].[none:Periodo:nk]</field>
+                  <field>[federated.17d8hs20oewems11wl0mq1b85azm].[sum:Proporción:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>&quot;1995-2004&quot;</value>
+                <value>0.70710287107835479</value>
+              </tuple>
+            </tuple-reference>
+            <label-position x='9' y='36' />
+          </mark-label>
+          <mark-label id='2'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields />
+                  <y-fields />
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.17d8hs20oewems11wl0mq1b85azm].[none:Periodo:nk]</field>
+                  <field>[federated.17d8hs20oewems11wl0mq1b85azm].[sum:Proporción:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>&quot;1985-1994&quot;</value>
+                <value>0.46058605691630838</value>
+              </tuple>
+            </tuple-reference>
+            <label-position x='-73' y='27' />
+          </mark-label>
+        </mark-labels>
+      </table>
+      <simple-id uuid='{BB0474DD-7D9C-430E-B649-FB45C3EEE1AF}' />
+    </worksheet>
+  </worksheets>
+  <windows saved-dpi-scale-factor='1.25' source-height='37'>
+    <window class='worksheet' maximized='true' name='Potencia por periodos'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='174'>
+            <card pane-specification-id='0' param='[federated.17d8hs20oewems11wl0mq1b85azm].[none:Periodo:nk]' type='color' />
+            <card pane-specification-id='0' param='[federated.17d8hs20oewems11wl0mq1b85azm].[sum:Proporción:qk]' type='size' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[federated.17d8hs20oewems11wl0mq1b85azm].[none:Periodo:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{26089C38-570F-4EE8-AF80-854878DED029}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Potencia por periodos' width='192'>
+      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
+      zLadfgDSAAAAAElFTkSuQmCC
+    </thumbnail>
+  </thumbnails>
+</workbook>

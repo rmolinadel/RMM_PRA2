@@ -1,0 +1,273 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20243.24.1010.1014                               -->
+<workbook original-version='18.1' source-build='2024.3.0 (20243.24.1010.1014)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AnimationOnByDefault />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='proporcion_frecuencia_por_provi (proporcion_frecuencia_por_provincias)' inline='true' name='federated.0pkhgr71y560vd1ahmw510ztv8na' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='proporcion_frecuencia_por_provincias' name='excel-direct.1anm54a1iibq861ck35u91ak8axv'>
+            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='C:/Users/ruben/Desktop/UOC/ASIGNATURAS OBLIGATORIAS/M2.859 - Visualización de datos/PRA2/proporcion_frecuencia_por_provincias.xlsx' interpretationMode='0' password='' server='' validate='no' />
+          </named-connection>
+        </named-connections>
+        <relation connection='excel-direct.1anm54a1iibq861ck35u91ak8axv' name='proporcion_frecuencia_por_provi' table='[proporcion_frecuencia_por_provi$]' type='table'>
+          <columns gridOrigin='A1:B5:no:A1:B5:0' header='yes' outcome='6'>
+            <column datatype='string' name='Provincia' ordinal='0' />
+            <column datatype='real' name='Freq' ordinal='1' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[proporcion_frecuencia_por_provi]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='context'>0</attribute>
+              <attribute datatype='string' name='gridOrigin'>&quot;A1:B5:no:A1:B5:0&quot;</attribute>
+              <attribute datatype='boolean' name='header'>true</attribute>
+              <attribute datatype='integer' name='outcome'>6</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Provincia</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Provincia]</local-name>
+            <parent-name>[proporcion_frecuencia_por_provi]</parent-name>
+            <remote-alias>Provincia</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LES_RES_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+            <object-id>[proporcion!frecuencia!por!provi_7D186B9A59AD4E019D07242185B4030C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Freq</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Freq]</local-name>
+            <parent-name>[proporcion_frecuencia_por_provi]</parent-name>
+            <remote-alias>Freq</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <object-id>[proporcion!frecuencia!por!provi_7D186B9A59AD4E019D07242185B4030C]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='string' name='[Provincia]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+      <column caption='proporcion_frecuencia_por_provi' datatype='table' name='[__tableau_internal_object_id__].[proporcion!frecuencia!por!provi_7D186B9A59AD4E019D07242185B4030C]' role='measure' type='quantitative' />
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;España&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <object-graph>
+        <objects>
+          <object caption='proporcion_frecuencia_por_provi' id='proporcion!frecuencia!por!provi_7D186B9A59AD4E019D07242185B4030C'>
+            <properties context=''>
+              <relation connection='excel-direct.1anm54a1iibq861ck35u91ak8axv' name='proporcion_frecuencia_por_provi' table='[proporcion_frecuencia_por_provi$]' type='table'>
+                <columns gridOrigin='A1:B5:no:A1:B5:0' header='yes' outcome='6'>
+                  <column datatype='string' name='Provincia' ordinal='0' />
+                  <column datatype='real' name='Freq' ordinal='1' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Proporción frecuencias'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='proporcion_frecuencia_por_provi (proporcion_frecuencia_por_provincias)' name='federated.0pkhgr71y560vd1ahmw510ztv8na' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0pkhgr71y560vd1ahmw510ztv8na'>
+            <column datatype='real' name='[Freq]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Provincia]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+            <column-instance column='[Provincia]' derivation='None' name='[none:Provincia:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Freq]' derivation='Sum' name='[sum:Freq:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Pie' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0pkhgr71y560vd1ahmw510ztv8na].[none:Provincia:nk]' />
+              <wedge-size column='[federated.0pkhgr71y560vd1ahmw510ztv8na].[sum:Freq:qk]' />
+              <size column='[federated.0pkhgr71y560vd1ahmw510ztv8na].[sum:Freq:qk]' />
+              <text column='[federated.0pkhgr71y560vd1ahmw510ztv8na].[sum:Freq:qk]' />
+              <text column='[federated.0pkhgr71y560vd1ahmw510ztv8na].[none:Provincia:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='size' value='1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{5D49DEC3-94E1-433B-8534-B2997D6FEB3D}' />
+    </worksheet>
+  </worksheets>
+  <windows saved-dpi-scale-factor='1.25' source-height='37'>
+    <window class='worksheet' maximized='true' name='Proporción frecuencias'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='173'>
+            <card pane-specification-id='0' param='[federated.0pkhgr71y560vd1ahmw510ztv8na].[none:Provincia:nk]' type='color' />
+            <card pane-specification-id='0' param='[federated.0pkhgr71y560vd1ahmw510ztv8na].[sum:Freq:qk]' type='size' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[federated.0pkhgr71y560vd1ahmw510ztv8na].[none:Provincia:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{1582DDA5-1440-4777-B613-24A137D73F0C}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Proporción frecuencias' width='192'>
+      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
+    </thumbnail>
+  </thumbnails>
+</workbook>
