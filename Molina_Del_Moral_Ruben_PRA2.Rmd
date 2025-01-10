@@ -1,0 +1,322 @@
+---
+title: "Molina_Del_Moral_PRA2"
+author: 'Autor: Rubén Molina Del Moral'
+date: "2024-12-26"
+output: pdf_document
+---
+Para empezar se procede a la carga de los datos:
+
+# 1º Carga de los datos de la plataforma 'dades obertes de Catalunya'
+```{r setup, include=TRUE}
+# Se cargan los datos seleccionando el archivo .csv correspondiente y con la codificación correcta
+ruta <- file.path("C:/Users/ruben/Desktop/UOC/ASIGNATURAS OBLIGATORIAS/M2.859 - Visualización de datos/PRA1",
+                  "Instal_lacions_d_autoconsum_el_ctric_20241214.csv")
+datos <- read.csv(ruta, sep = ";", header = TRUE, fileEncoding = "UTF-8")
+```
+
+Acto y seguido, se procede al tratamiento de los datos para trabajar con datos que se puedan interpretar y 
+transformar los registros con potencias anómalas:
+
+# 2º Tratamiento de los datos
+
+**Se transforman los registros con el formato xxx.xxx.xxx.xxx.xxx. a xxx sin decimales**
+```{r, include=TRUE, warning=FALSE}
+# Carga la libreria de tidyverse
+library(tidyverse)
+
+# Reemplaza el formato con múltiples puntos (que marcan decimales) por el formato deseado
+datos$Potència <- gsub("\\..*$", "", datos$Potència)
+```
+
+**Se añade una nueva variable como 'Provincia' para saber en que provincias se ubican las instalaciones.**
+```{r, include=TRUE}
+# Se carga la librería de dplyr
+library(dplyr)
+# Se añade una nueva variable en el conjunto de datos con el nombre de 'Provincias'
+datos_1 <- datos %>%
+  mutate(Provincia = case_when(
+    Comarca == "Anoia" ~ "Barcelona",
+    Comarca == "Alt Penedès" ~ "Barcelona",
+    Comarca == "Alt penedès" ~ "Barcelona",
+    Comarca == "Baix Llobregat" ~ "Barcelona",
+    Comarca == "Baix llobregat" ~ "Barcelona",
+    Comarca == "bages" ~ "Barcelona",
+    Comarca == "Bages" ~ "Barcelona",
+    Comarca == "BAGES" ~ "Barcelona",
+    Comarca == "Berguedà" ~ "Barcelona",
+    Comarca == "Barcelonès" ~ "Barcelona",
+    Comarca == "Baix Llobregat" ~ "Barcelona",
+    Comarca == "Baix llobregat" ~ "Barcelona",
+    Comarca == "Baix penedès" ~ "Barcelona",
+    Comarca == "Garraf" ~ "Barcelona",
+    Comarca == "Lluçanes" ~ "Barcelona",
+    Comarca == "Maresme" ~ "Barcelona",
+    Comarca == "Moianès" ~ "Barcelona",
+    Comarca == "Osona" ~ "Barcelona",
+    Comarca == "Vallès Occidental" ~ "Barcelona",
+    Comarca == "Vallès Oriental" ~ "Barcelona",
+    Comarca == "Alt Empordà" ~ "Girona",
+    Comarca == "Baix Empordà" ~ "Girona",
+    Comarca == "Garrotxa" ~ "Girona",
+    Comarca == "Gironès" ~ "Girona",
+    Comarca == "Pla de l'Estany" ~ "Girona",
+    Comarca == "Ripollès" ~ "Girona",
+    Comarca == "Selva" ~ "Girona",
+    Comarca == "Alta Ribagorça" ~ "Lleida",
+    Comarca == "Aran" ~ "Lleida",
+    Comarca == "Cerdanya" ~ "Lleida",
+    Comarca == "Garrigues" ~ "Lleida",
+    Comarca == "Noguera" ~ "Lleida",
+    Comarca == "Segarra" ~ "Lleida",
+    Comarca == "Segrià" ~ "Lleida",
+    Comarca == "SEGRIÀ" ~ "Lleida",
+    Comarca == "Alt Urgell" ~ "Lleida",
+    Comarca == "Urgell" ~ "Lleida",
+    Comarca == "Pla d'Urgell" ~ "Lleida",
+    Comarca == "Pallars Jussà" ~ "Lleida",
+    Comarca == "Pallars Sobirà" ~ "Lleida",
+    Comarca == "Solsonès" ~ "Lleida",
+    Comarca == "Alt Camp" ~ "Tarragona",
+    Comarca == "Baix Camp" ~ "Tarragona",
+    Comarca == "Baix Ebre" ~ "Tarragona",
+    Comarca == "Baix Penedès" ~ "Tarragona",
+    Comarca == "Conca de Barberà" ~ "Tarragona",
+    Comarca == "Montsià" ~ "Tarragona",
+    Comarca == "Ribera d'Ebre" ~ "Tarragona",
+    Comarca == "Priorat" ~ "Tarragona",
+    Comarca == "Tarragonès" ~ "Tarragona",
+    Comarca == "Terra Alta" ~ "Tarragona",
+    TRUE ~ NA_character_  # Mantiene NA en otras filas
+  ))
+```
+
+**Se calculan las frecuencias y proporciones de las instalaciones de autoconsumo eléctrico por provincias**
+```{r, include=TRUE}
+# Calcula las frecuencias por provincias
+frecuencias_provincias <- table(datos_1$Provincia)
+# Muestra las frecuencias de las provincias deseadas
+provincias_seleccionadas <- c("Barcelona", "Girona", "Lleida", "Tarragona")
+frecuencias_filtradas <- frecuencias_provincias[provincias_seleccionadas]
+# Muestra el resultado
+print(frecuencias_filtradas)
+# Calcula las proporciones y se multiplica por 100
+proporciones_provincias <- prop.table(frecuencias_provincias) * 100  
+# Filtra solo las provincias deseadas
+provincias_seleccionadas <- c("Barcelona", "Girona", "Lleida", "Tarragona")
+proporciones_provincias_filtradas <- proporciones_provincias[provincias_seleccionadas]
+# Muestra las proporciones por provincias
+print(proporciones_provincias_filtradas)
+```
+
+**Se descarga el archivo de "frecuencia_por_provincias.csv" en formato.csv**
+```{r, include=TRUE}
+# Guarda el dataframe 'frecuencias_filtradas' en un archivo CSV
+write.csv(frecuencias_filtradas, "frecuencia_por_provincias.csv", row.names = FALSE)
+```
+
+**Se descarga el archivo de "proporcion_frecuencia_por_provincias.csv" en formato.csv**
+```{r, include=TRUE}
+# Guarda el dataframe 'proporciones_provincias_filtradas' en un archivo CSV
+write.csv(proporciones_provincias_filtradas, "proporcion_frecuencia_por_provincias.csv", row.names = FALSE)
+```
+
+**Se realiza el gráfico de barras para las frecuencias de las instalaciones de autoconsumo por provincias**
+```{r, include=TRUE}
+# Gráfico de barras de las frecuencias por provincias
+barplot(frecuencias_filtradas,
+        main = "Frecuencias instalaciones de autoconsumo por Provincias",
+        col = c("skyblue", "orange", "lightgreen", "pink"),
+        ylab = "Frecuencia",
+        xlab = "Provincia",
+        ylim = c(0,70000),
+        border = "black")
+```
+
+**Se realiza el gráfico de barras para las proporciones de las instalaciones de autoconsumo por provincias**
+```{r, include=TRUE}
+# Gráfico de barras de las proporciones por provincias
+barplot(proporciones_provincias_filtradas,
+        main = "Proporción instalaciones de autoconsumo por Provincias",
+        col = c("skyblue", "orange", "lightgreen", "pink"),
+        ylab = "Proporción (%)",
+        xlab = "Provincia",
+        ylim = c(0,70),
+        border = "black")
+```
+
+**Se calcula la potencia de las instalaciones de autoconsumo por provincias**
+```{r, include=TRUE}
+# Carga la libreria de tidyverse
+library(tidyverse)
+
+# Transforma la variable 'Potència' a numérica
+datos_1$Potència <- as.numeric(gsub(",", ".", datos_1$Potència))
+
+# Se Agrupa por provincia y se calcula la potencia total para cada una de ellas
+potencia_por_provincias <- datos_1 %>% 
+  group_by(Provincia) %>% 
+  summarise(
+    total_potencia = sum(Potència, na.rm = TRUE)
+  )
+
+# Muestra el resultado
+print(potencia_por_provincias)
+
+# Calcula las proporciones de la potencia por provincia
+proporciones_potencia_por_provincias <- potencia_por_provincias %>%
+  mutate(proporcion = (total_potencia / sum(total_potencia)) * 100)
+
+# Filtra solo las provincias deseadas
+provincias_seleccionadas <- c("Barcelona", "Girona", "Lleida", "Tarragona")
+proporciones_provincias_filtradas <- proporciones_potencia_por_provincias %>%
+  filter(Provincia %in% provincias_seleccionadas)
+
+# Muestra las proporciones por provincias
+print(proporciones_provincias_filtradas)
+```
+
+**Se extraen los datos con el total de las potencias por provincias**
+```{r, include=TRUE}
+# Guarda el dataframe 'potencia_por_provincias' en un archivo CSV
+write.csv(potencia_por_provincias, "potencia_por_provincias.csv", row.names = FALSE)
+```
+
+**Se extraen los datos con la proporción del total de las potencias por provincias**
+```{r, include=TRUE}
+# Guarda el dataframe 'proporciones_provincias_filtradas' en un archivo CSV
+write.csv(proporciones_provincias_filtradas, "proporcion_potencia_por_provincias.csv", row.names = FALSE)
+```
+
+**Se calcula la frecuencia y las proporciones de las instalaciones por tecnologia**
+```{r, include=TRUE}
+# Calcula las frecuencias de las instalaciones por tecnología
+frecuencias_tecnologia <- table(datos_1$Tecnologia)
+# Muestra las frecuencias de las tecnologías deseadas
+tecnologias_seleccionadas <- c("HIDROELECTRICA", "COGENERACIO", "RESIDUS", "BIOGÀS", "FOTOVOLTAICA",
+                               "ENERGIES RESIDUALS", "EÒLICA", "EOLICA")
+tecnologias_filtradas <- frecuencias_tecnologia[tecnologias_seleccionadas]
+# Muestra el resultado de las frecuencias por tecnología
+print(tecnologias_filtradas)
+# Calcula proporciones y multiplica por 100 para porcentaje
+proporciones_tecnologias <- prop.table(frecuencias_tecnologia) * 100  
+# Filtra solo las tecnologías deseadas
+tecnologias_seleccionadas <- c("HIDROELECTRICA", "COGENERACIO", "RESIDUS", "BIOGÀS", "FOTOVOLTAICA",
+                               "ENERGIES RESIDUALS", "EÒLICA", "EOLICA")
+proporciones_tecnologias_filtradas <- proporciones_tecnologias[tecnologias_seleccionadas]
+# Muestra las proporciones por tecnologías
+print(proporciones_tecnologias_filtradas)
+```
+
+**Se calcula la potencia de las instalaciones de autoconsumo por Tecnologías**
+```{r, include=TRUE}
+# Carga la libreria de tidyverse
+library(tidyverse)
+
+# Convierte la columna de 'Potència' a variable numérica
+datos_1$Potència <- as.numeric(gsub(",", ".", datos_1$Potència))
+
+# Agrupa por tecnologías y calcula la potencia total para cada una de ellas
+potencia_por_tecnologias <- datos_1 %>% 
+  group_by(Tecnologia) %>% 
+  summarise(
+    total_potencia = sum(Potència, na.rm = TRUE)
+  )
+
+# Muestra el resultado de potencia por tecnología
+print(potencia_por_tecnologias)
+
+# Calcula las proporciones de la potencia por tecnología
+proporciones_potencia_por_tecnologias <- potencia_por_tecnologias %>%
+  mutate(proporcion = (total_potencia / sum(total_potencia)) * 100)
+
+# Filtra solo las tecnologías deseadas
+tecnologias_seleccionadas <- c("HIDROELECTRICA", "COGENERACIO", "RESIDUS", "BIOGÀS", "FOTOVOLTAICA",
+                               "ENERGIES RESIDUALS", "EÒLICA", "EOLICA")
+proporciones_tecnologias_filtradas <- proporciones_potencia_por_tecnologias %>%
+  filter(Tecnologia %in% tecnologias_seleccionadas)
+
+# Muestra las proporciones de las tecnologías
+print(proporciones_tecnologias_filtradas)
+```
+**Se extraen en formato .csv los datos con el total de las potencias por tecnologias**
+```{r, include=TRUE}
+# Guarda el dataframe 'potencia_por_tecnologias' en un archivo CSV
+write.csv(potencia_por_tecnologias, "potencia_por_tecnologias.csv", row.names = FALSE)
+```
+
+**Se extraen en formato .csv los datos con la proporción del total de las potencias por tecnologias**
+```{r, include=TRUE}
+# Guarda el dataframe 'proporciones_tecnologias_filtradas' en un archivo CSV
+write.csv(proporciones_tecnologias_filtradas, "proporcion_potencia_por_tecnologias.csv", row.names = FALSE)
+```
+
+**Se extraen en formato .csv los datos con el tratamiento realizado en archivo de excel**
+```{r, include=TRUE}
+# Guarda el dataframe 'datos_1' en un archivo CSV
+write.csv(datos_1, "Instalaciones_autoconsumo_electrico_2024.csv", row.names = FALSE)
+```
+
+Como punto final, se calculan las instalaciones en función de la potencia que se han puesto en servicio en 4 periodos diferentes.
+
+**Se asigna tipo de variable en "Data.de.posada.en.servei" y "Potència"**
+```{r, include=TRUE}
+# Transforma la variable de "Data.de.posada.en.servei" a fecha
+datos_1$Data.de.posada.en.servei=as.Date(datos_1$Data.de.posada.en.servei,format="%d/%m/%Y")
+head(datos_1$Data.de.posada.en.servei)
+# Se verifica que la variable de 'Data.de.posada.en.servei' se ha transformado como variable de fecha
+str(datos_1$Data.de.posada.en.servei)
+```
+```{r, include=TRUE}
+# Transforma la variable de "Potència" a numérica
+datos_1$Potència <- as.numeric(datos_1$Potència)
+```
+
+**Se calcula la potencia de las instalaciones inscritas entre los años 1985-1995, 1995-2005, 2005-2015 2015-2024**
+```{r, include=TRUE}
+# Se carga la librería dplyr
+library(dplyr)
+
+# Suma las potencias desde el año 1985 al 1995 
+suma_1985_1995 <- datos_1 %>%
+  filter(Data.de.posada.en.servei >= as.Date("1985-01-01") & Data.de.posada.en.servei < as.Date("1994-12-31")) %>%
+  summarise(Suma_Potencia = sum(Potència, na.rm = TRUE))
+# Suma las potencias desde el año 1995 al 2005
+suma_1995_2005 <- datos_1 %>%
+  filter(Data.de.posada.en.servei >= as.Date("1995-01-01") & Data.de.posada.en.servei < as.Date("2004-12-31")) %>%
+  summarise(Suma_Potencia = sum(Potència, na.rm = TRUE))
+# Suma las potencias desde el año 2005 al 2015
+suma_2005_2015 <- datos_1 %>%
+  filter(Data.de.posada.en.servei >= as.Date("2005-01-01") & Data.de.posada.en.servei <= as.Date("2014-12-31")) %>%
+  summarise(Suma_Potencia = sum(Potència, na.rm = TRUE))
+# Suma las potencias desde el año 2015 al 2024
+suma_2015_2024 <- datos_1 %>%
+  filter(Data.de.posada.en.servei >= as.Date("2015-01-01") & Data.de.posada.en.servei <= as.Date("2024-12-31")) %>%
+  summarise(Suma_Potencia = sum(Potència, na.rm = TRUE))
+
+# Muestra los resultados de los 4 períodos
+print(suma_1985_1995)
+print(suma_1995_2005)
+print(suma_2005_2015)
+print(suma_2015_2024)
+```
+
+**Se calculan las potencias para cada una de las comarcas**
+```{r, include=TRUE}
+# Se carga la librería dplyr
+library(dplyr)
+# Agrupa por comarcas y calcula la potencia total para cada una de ellas
+potencia_por_comarcas <- datos_1 %>% 
+  group_by(Comarca) %>% 
+  summarise(
+    total_potencia = sum(Potència, na.rm = TRUE)
+  )
+
+# Muestra el resultado de la portencia por comarcas
+print(potencia_por_comarcas)
+```
+**Se extraen en formato .csv los datos con el total de las potencias por comarcas**
+```{r, include=TRUE}
+# Guarda el dataframe 'potencia_por_comarcas' en un archivo CSV
+write.csv(potencia_por_comarcas, "potencia_por_comarcas.csv", row.names = FALSE)
+```
+
