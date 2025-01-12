@@ -6,7 +6,7 @@ Además, se puede ver el resultado final del conjunto de datos con los tratamien
 
 También se han adjuntado todos los archivos excels en formato .xlsx que se han utilizado para realizar los gráficos de barras y cargar la fuente de datos de la herramienta de Tableau. Los archivos en formato .twb de las visualizaciones implementadas también se han cargado en el presente repositorio. 
 
-Finalmente, se adjunta el archivo "Molina_Del_Moral_Ruben_PRA2" en formato .pdf y .rmd donde se muestra el código que se ha utlizado para el tratamiento de los datos y la importación y exportación en formato .csv.
+Finalmente, se adjunta el archivo "Molina_Del_Moral_Ruben_PRA2" en formato .pdf y .rmd donde se muestra el código que se ha utilizado para el tratamiento de los datos y la importación y exportación en formato .csv.
 
 Los enlaces utilizados para realizar el proyecto son los siguientes:
 
